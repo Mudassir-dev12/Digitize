@@ -4,7 +4,8 @@ import { useState } from "react";
 import Preloader from "@/components/sections/Preloader";
 import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
-import Marquee from "@/components/sections/Marquee";
+import StatsCounter from "@/components/sections/StatsCounter";
+import FeaturedHoverShowcase from "@/components/sections/FeaturedHoverShowcase";
 import About from "@/components/sections/About";
 import Services from "@/components/sections/Services";
 import Work from "@/components/sections/Work";
@@ -18,14 +19,15 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   return (
-    <main className="relative min-h-screen bg-[#0a0a0a] text-zinc-100 flex flex-col">
+    <main className="relative min-h-screen bg-[#060913] subtle-grid text-zinc-100 flex flex-col">
       {/* High-Tech Preloader */}
       {loading && <Preloader onComplete={() => setLoading(false)} />}
 
       {/* Main Studio Experience */}
       <Navbar />
       <Hero />
-      <Marquee />
+      <StatsCounter />
+      <FeaturedHoverShowcase />
       <About />
       <Services />
       <Work />

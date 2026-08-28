@@ -1,14 +1,20 @@
 "use client";
 
 import { useRef, useMemo } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { useMousePosition } from "@/hooks/useMousePosition";
 
 function ReactiveGrid({ mousePosRef }: { mousePosRef: React.MutableRefObject<{ normX: number; normY: number }> }) {
   const pointsRef = useRef<THREE.Points>(null);
-  const rows = 35;
-  const cols = 35;
+  const { size } = useThree();
+
+  const { rows, cols, spacing } = useMemo(() => {
+    if (size.width < 640) return { rows: 22, cols: 22, spacing: 0.35 };
+    if (size.width < 1024) return { rows: 28, cols: 28, spacing: 0.40 };
+    return { rows: 35, cols: 35, spacing: 0.45 };
+  }, [size.width]);
+
   const count = rows * cols;
 
   const [positions, initialPositions] = useMemo(() => {
@@ -18,8 +24,8 @@ function ReactiveGrid({ mousePosRef }: { mousePosRef: React.MutableRefObject<{ n
     let idx = 0;
     for (let i = 0; i < rows; i++) {
       for (let j = 0; j < cols; j++) {
-        const x = (j - cols / 2) * 0.45;
-        const y = (i - rows / 2) * 0.45;
+        const x = (j - cols / 2) * spacing;
+        const y = (i - rows / 2) * spacing;
         const z = 0;
 
         pos[idx * 3] = x;
@@ -33,7 +39,7 @@ function ReactiveGrid({ mousePosRef }: { mousePosRef: React.MutableRefObject<{ n
       }
     }
     return [pos, initPos];
-  }, [count, rows, cols]);
+  }, [count, rows, cols, spacing]);
 
   useFrame((state) => {
     if (!pointsRef.current) return;
@@ -69,10 +75,10 @@ function ReactiveGrid({ mousePosRef }: { mousePosRef: React.MutableRefObject<{ n
         <bufferAttribute attach="attributes-position" args={[positions, 3]} />
       </bufferGeometry>
       <pointsMaterial
-        size={0.035}
-        color="#38bdf8"
+        size={size.width < 640 ? 0.045 : 0.035}
+        color="#2563eb"
         transparent
-        opacity={0.65}
+        opacity={0.75}
         sizeAttenuation
         blending={THREE.AdditiveBlending}
       />
@@ -95,3 +101,4 @@ export default function ContactParticles() {
     </div>
   );
 }
+

@@ -6,7 +6,9 @@ import ContactParticles from "@/components/3d/ContactParticles";
 import CanvasContainer from "@/components/3d/CanvasContainer";
 import MagneticButton from "@/components/ui/MagneticButton";
 import { useAudioFx } from "@/hooks/useAudioFx";
-import { Send, CheckCircle2, Sparkles, Mail, MessageSquare, DollarSign, Calendar } from "lucide-react";
+import { STUDIO_INFO } from "@/lib/data";
+import ExecutiveBusinessCard from "@/components/ui/ExecutiveBusinessCard";
+import { Send, CheckCircle2, Sparkles, Mail, MessageSquare, DollarSign, Calendar, Phone, MapPin, UserCheck, ArrowUpRight } from "lucide-react";
 
 export default function Contact() {
   const [selectedServices, setSelectedServices] = useState<string[]>(["Full-Stack Architecture"]);
@@ -58,7 +60,7 @@ export default function Contact() {
         particleCount: 100,
         spread: 70,
         origin: { y: 0.6 },
-        colors: ["#38bdf8", "#818cf8", "#34d399", "#c084fc"],
+        colors: ["#2563eb", "#1d4ed8", "#3b82f6", "#60a5fa"],
       });
     }, 1200);
   };
@@ -66,7 +68,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative w-full py-28 sm:py-36 px-4 sm:px-8 md:px-16 bg-[#070709] noise-bg overflow-hidden"
+      className="relative w-full py-28 sm:py-36 px-4 sm:px-8 md:px-16 bg-[#060913] noise-bg overflow-hidden"
     >
       {/* Interactive 3D Particle WebGL Layer */}
       <CanvasContainer>
@@ -74,24 +76,29 @@ export default function Contact() {
       </CanvasContainer>
 
       {/* Radial Gradient Glows */}
-      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-brand-blue/5 rounded-full blur-[160px]" />
+      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-600/10 rounded-full blur-[160px]" />
 
       <div className="relative z-10 max-w-5xl mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-16">
+        <div className="flex flex-col items-center text-center mb-12">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-px bg-brand-blue" />
-            <span className="font-mono text-xs uppercase tracking-widest text-brand-blue">
-              START A SPRINT // 07
+            <div className="w-8 h-px bg-blue-500" />
+            <span className="font-mono text-xs uppercase tracking-widest text-blue-400">
+              DIRECT DISPATCH // 07
             </span>
-            <div className="w-8 h-px bg-brand-blue" />
+            <div className="w-8 h-px bg-blue-500" />
           </div>
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white uppercase mb-4">
-            Initiate Architecture Call
+            Initiate Architecture Sprint
           </h2>
           <p className="text-zinc-400 text-sm sm:text-base max-w-xl font-light">
-            Tell us about your technical requirements. Our principal engineering team will review your spec and provide a comprehensive architecture roadmap within 24 hours.
+            Connect directly with executive leadership or transmit your project specification below.
           </p>
+        </div>
+
+        {/* Executive Business Card Interactive Component */}
+        <div className="mb-14">
+          <ExecutiveBusinessCard />
         </div>
 
         {/* Contact Container */}

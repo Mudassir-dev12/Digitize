@@ -9,6 +9,7 @@ export default function CustomCursor() {
   const [cursorText, setCursorText] = useState<string>("");
   const [cursorState, setCursorState] = useState<"default" | "hover" | "view" | "drag" | "text">("default");
   const [isTouch, setIsTouch] = useState<boolean>(true);
+  const [hasMoved, setHasMoved] = useState<boolean>(false);
 
   useEffect(() => {
     // Detect touch device
@@ -31,6 +32,7 @@ export default function CustomCursor() {
     const setRingY = gsap.quickSetter(ring, "y", "px");
 
     const handleMouseMove = (e: MouseEvent) => {
+      setHasMoved(true);
       mouse.x = e.clientX;
       mouse.y = e.clientY;
       setX(mouse.x);
@@ -83,7 +85,7 @@ export default function CustomCursor() {
     };
   }, []);
 
-  if (isTouch) return null;
+  if (isTouch || !hasMoved) return null;
 
   return (
     <>

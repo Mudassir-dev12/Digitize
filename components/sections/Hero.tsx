@@ -23,23 +23,17 @@ export default function Hero() {
     const tl = gsap.timeline({ delay: 0.2 });
 
     tl.fromTo(
-      badgeRef.current,
-      { y: -20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+      titleRef.current?.children || [],
+      { y: 60, opacity: 0, rotateX: 25 },
+      {
+        y: 0,
+        opacity: 1,
+        rotateX: 0,
+        duration: 0.9,
+        stagger: 0.12,
+        ease: "power4.out",
+      }
     )
-      .fromTo(
-        titleRef.current?.children || [],
-        { y: 60, opacity: 0, rotateX: 25 },
-        {
-          y: 0,
-          opacity: 1,
-          rotateX: 0,
-          duration: 0.9,
-          stagger: 0.12,
-          ease: "power4.out",
-        },
-        "-=0.3"
-      )
       .fromTo(
         subtitleRef.current,
         { y: 30, opacity: 0 },
@@ -51,12 +45,6 @@ export default function Hero() {
         { y: 20, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power2.out" },
         "-=0.4"
-      )
-      .fromTo(
-        telemetryRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 0.8, ease: "power2.out" },
-        "-=0.2"
       );
   }, []);
 
@@ -64,10 +52,10 @@ export default function Hero() {
     <section
       id="hero"
       ref={heroRef}
-      className="relative w-full min-h-screen flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 md:px-12 overflow-hidden noise-bg"
+      className="relative w-full min-h-[calc(100vh-4.5rem)] flex items-center justify-center pt-4 sm:pt-8 pb-12 px-4 sm:px-6 md:px-12 overflow-hidden noise-bg"
     >
       {/* 3D WebGL Canvas Layer */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <CanvasContainer>
           <HeroScene />
         </CanvasContainer>
@@ -79,17 +67,6 @@ export default function Hero() {
 
       {/* Content Container */}
       <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col items-center text-center">
-        {/* Top Architecture Badge */}
-        <div
-          ref={badgeRef}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel border border-brand-blue/30 text-xs font-mono text-brand-blue mb-6 sm:mb-8"
-        >
-          <Sparkles className="w-3.5 h-3.5 text-brand-blue animate-pulse" />
-          <span className="tracking-widest uppercase font-semibold">
-            DIGITAL ARCHITECTURE & DISTRIBUTED SYSTEMS
-          </span>
-        </div>
-
         {/* Kinetic Hero Headline */}
         <h1
           ref={titleRef}
@@ -118,7 +95,7 @@ export default function Hero() {
         {/* Action Buttons */}
         <div
           ref={actionsRef}
-          className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto justify-center mb-16"
+          className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto justify-center"
         >
           <MagneticButton
             variant="primary"
@@ -136,48 +113,6 @@ export default function Hero() {
           >
             <span>Schedule Architecture Call</span>
           </MagneticButton>
-        </div>
-
-        {/* Bottom Studio Telemetry Banner */}
-        <div
-          ref={telemetryRef}
-          className="w-full max-w-4xl grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 p-4 rounded-2xl glass-panel border border-white/10"
-        >
-          <div className="flex flex-col items-center sm:items-start p-2">
-            <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest flex items-center gap-1.5">
-              <Terminal className="w-3 h-3 text-brand-blue" /> CORE STACK
-            </span>
-            <span className="font-mono text-xs sm:text-sm font-bold text-zinc-200 mt-1">
-              Next.js 14 • Rust • WebGL
-            </span>
-          </div>
-
-          <div className="flex flex-col items-center sm:items-start p-2">
-            <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest flex items-center gap-1.5">
-              <ShieldCheck className="w-3 h-3 text-emerald-400" /> SYSTEM SLA
-            </span>
-            <span className="font-mono text-xs sm:text-sm font-bold text-emerald-400 mt-1">
-              99.99% Reliability
-            </span>
-          </div>
-
-          <div className="flex flex-col items-center sm:items-start p-2">
-            <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest">
-              DISCIPLINE
-            </span>
-            <span className="font-mono text-xs sm:text-sm font-bold text-zinc-200 mt-1">
-              100% Human Code
-            </span>
-          </div>
-
-          <div className="flex flex-col items-center sm:items-start p-2">
-            <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest">
-              AVAILABILITY
-            </span>
-            <span className="font-mono text-xs sm:text-sm font-bold text-brand-blue mt-1">
-              ● Q3/Q4 Sprints Open
-            </span>
-          </div>
         </div>
       </div>
     </section>

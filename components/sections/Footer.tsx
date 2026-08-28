@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { WORLD_CLOCKS, STUDIO_INFO } from "@/lib/data";
 import { ArrowUp, Github, Linkedin, Twitter, Globe, ArrowRight, Shield } from "lucide-react";
 import { useSmoothScroll } from "@/components/providers/SmoothScrollProvider";
+import DigitizeLogo from "@/components/ui/DigitizeLogo";
 import MagneticButton from "@/components/ui/MagneticButton";
 
 export default function Footer() {
@@ -71,22 +72,25 @@ export default function Footer() {
           {/* Studio Brand Info */}
           <div className="md:col-span-5 flex flex-col justify-between">
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-blue to-brand-violet flex items-center justify-center font-mono font-black text-black text-sm shadow-[0_0_15px_rgba(56,189,248,0.4)]">
-                  D
-                </div>
-                <span className="font-black text-xl tracking-wider text-white">
-                  {STUDIO_INFO.name}
-                </span>
+              <div className="mb-4">
+                <DigitizeLogo variant="full" size="md" theme="dark" />
               </div>
               <p className="text-zinc-400 text-sm font-light leading-relaxed max-w-sm mb-6">
-                Engineering digital flagships, distributed cloud systems, and high-performance WebGL applications for forward-thinking enterprises.
+                Full-stack software engineering, bespoke digital architecture, and high-scale web platforms led by Founder & CEO Madni Silat.
               </p>
+
+              {/* Direct Info List */}
+              <div className="space-y-2 mb-6 font-mono text-xs text-zinc-300">
+                <p><span className="text-blue-400">FOUNDER & CEO:</span> {STUDIO_INFO.founder}</p>
+                <p><span className="text-blue-400">PHONE:</span> {STUDIO_INFO.phone}</p>
+                <p><span className="text-blue-400">EMAIL:</span> {STUDIO_INFO.email}</p>
+                <p><span className="text-blue-400">HQ:</span> {STUDIO_INFO.address}</p>
+              </div>
             </div>
 
             <div className="flex items-center gap-3 text-xs font-mono text-zinc-400">
               <Shield className="w-4 h-4 text-emerald-400" />
-              <span>SOC2 Type II & ISO-27001 Compliant Architectures</span>
+              <span>SOC2 Type II & Enterprise SLA Compliant</span>
             </div>
           </div>
 
@@ -228,11 +232,11 @@ export default function Footer() {
 
         {/* Bottom Legal Copyright */}
         <div className="pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-400">
-          <p>© {new Date().getFullYear()} DIGITIZE STUDIO. ALL ARCHITECTURAL RIGHTS RESERVED.</p>
+          <p>© {new Date().getFullYear()} DIGITIZE. WORK LOCAL RESULT GLOBAL. ALL RIGHTS RESERVED.</p>
           <div className="flex items-center gap-6">
-            <span>SAN FRANCISCO • LONDON • TOKYO</span>
+            <span>KARACHI (HQ) • SAN FRANCISCO • LONDON • TOKYO</span>
             <span className="text-zinc-400">|</span>
-            <span className="text-brand-blue">60 FPS PERFORMANCE</span>
+            <span className="text-blue-500 font-bold">60 FPS PERFORMANCE</span>
           </div>
         </div>
       </div>

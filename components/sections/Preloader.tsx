@@ -3,6 +3,8 @@
 import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
 
+import DigitizeLogo from "@/components/ui/DigitizeLogo";
+
 interface PreloaderProps {
   onComplete: () => void;
 }
@@ -77,11 +79,8 @@ export default function Preloader({ onComplete }: PreloaderProps) {
     >
       <div ref={textRef} className="w-full max-w-md flex flex-col items-start">
         {/* Studio Branding */}
-        <div className="flex items-center gap-3 mb-8">
-          <div className="w-4 h-4 rounded-sm bg-brand-blue animate-pulse shadow-[0_0_15px_rgba(56,189,248,0.8)]" />
-          <span className="font-mono text-xs uppercase tracking-widest text-zinc-400">
-            DIGITIZE ARCHITECTURE // SYSTEM LOAD
-          </span>
+        <div className="mb-8">
+          <DigitizeLogo variant="full" size="sm" theme="dark" />
         </div>
 
         {/* Big Counter */}
