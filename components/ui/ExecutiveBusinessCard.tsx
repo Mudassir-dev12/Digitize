@@ -112,7 +112,7 @@ export default function ExecutiveBusinessCard() {
                   href={`tel:${STUDIO_INFO.phone}`}
                   className="flex items-center gap-3 group/item hover:translate-x-1 transition-transform"
                 >
-                  <div className="w-9 h-9 rounded-lg bg-[#1B449C] text-white flex items-center justify-center shrink-0 shadow-sm">
+                  <div className="w-9 h-9 rounded-full bg-[#1B449C] text-white flex items-center justify-center shrink-0 shadow-sm">
                     <Phone className="w-4 h-4" />
                   </div>
                   <div className="border-l-2 border-[#1B449C] pl-2.5">
@@ -127,7 +127,7 @@ export default function ExecutiveBusinessCard() {
                   href={`mailto:${STUDIO_INFO.email}`}
                   className="flex items-center gap-3 group/item hover:translate-x-1 transition-transform"
                 >
-                  <div className="w-9 h-9 rounded-lg bg-[#1B449C] text-white flex items-center justify-center shrink-0 shadow-sm">
+                  <div className="w-9 h-9 rounded-full bg-[#1B449C] text-white flex items-center justify-center shrink-0 shadow-sm">
                     <Mail className="w-4 h-4" />
                   </div>
                   <div className="border-l-2 border-[#1B449C] pl-2.5">
@@ -144,7 +144,7 @@ export default function ExecutiveBusinessCard() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 group/item hover:translate-x-1 transition-transform"
                 >
-                  <div className="w-9 h-9 rounded-lg bg-[#1B449C] text-white flex items-center justify-center shrink-0 shadow-sm">
+                  <div className="w-9 h-9 rounded-full bg-[#1B449C] text-white flex items-center justify-center shrink-0 shadow-sm">
                     <Globe className="w-4 h-4" />
                   </div>
                   <div className="border-l-2 border-[#1B449C] pl-2.5">
@@ -156,7 +156,7 @@ export default function ExecutiveBusinessCard() {
 
                 {/* Address */}
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-[#1B449C] text-white flex items-center justify-center shrink-0 shadow-sm">
+                  <div className="w-9 h-9 rounded-full bg-[#1B449C] text-white flex items-center justify-center shrink-0 shadow-sm">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div className="border-l-2 border-[#1B449C] pl-2.5">

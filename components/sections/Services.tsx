@@ -90,20 +90,28 @@ export default function Services() {
                     {service.technologies.slice(0, 4).map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-zinc-300 border border-white/[0.06]"
+                        className="px-2.5 py-1 rounded-full text-[10px] font-mono bg-white/[0.04] text-zinc-300 border border-white/[0.06]"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
 
-                  <div className="flex items-center justify-between text-xs font-mono text-brand-blue pt-4 border-t border-white/[0.06]">
-                    <span>{isSelected ? "COLLAPSE SPEC" : "INSPECT SPEC"}</span>
-                    <ChevronDown
-                      className={`w-4 h-4 transition-transform duration-300 ${
-                        isSelected ? "rotate-180 text-brand-blue" : "text-zinc-500"
+                  <div className="pt-4 border-t border-white/[0.06]">
+                    <div
+                      className={`inline-flex items-center justify-between gap-2 px-4 py-2 rounded-full border text-xs font-mono transition-all duration-300 w-full ${
+                        isSelected
+                          ? "bg-brand-blue text-black border-brand-blue font-bold shadow-[0_0_15px_rgba(56,189,248,0.4)]"
+                          : "bg-white/[0.04] text-brand-blue border-brand-blue/30 hover:bg-brand-blue hover:text-black hover:border-brand-blue"
                       }`}
-                    />
+                    >
+                      <span>{isSelected ? "COLLAPSE SPEC" : "INSPECT SPEC"}</span>
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform duration-300 ${
+                          isSelected ? "rotate-180 text-black" : "group-hover:text-black"
+                        }`}
+                      />
+                    </div>
                   </div>
                 </div>
               </TiltCard>

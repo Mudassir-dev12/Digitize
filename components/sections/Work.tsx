@@ -90,22 +90,20 @@ export default function Work() {
         <div className="flex items-center gap-2 p-1.5 rounded-full bg-white/[0.04] border border-white/10 self-start md:self-auto">
           <button
             onClick={() => setViewMode("horizontal")}
-            className={`hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-mono transition-colors ${
-              viewMode === "horizontal"
+            className={`hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-mono transition-colors ${viewMode === "horizontal"
                 ? "bg-brand-blue text-black font-semibold"
                 : "text-zinc-400 hover:text-white"
-            }`}
+              }`}
           >
             <SlidersHorizontal className="w-3.5 h-3.5" />
             <span>PINNED STREAM</span>
           </button>
           <button
             onClick={() => setViewMode("grid")}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-mono transition-colors ${
-              viewMode === "grid" || !isDesktop
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-mono transition-colors ${viewMode === "grid" || !isDesktop
                 ? "bg-brand-blue text-black font-semibold"
                 : "text-zinc-400 hover:text-white"
-            }`}
+              }`}
           >
             <LayoutGrid className="w-3.5 h-3.5" />
             <span>GRID MATRIX</span>
@@ -176,14 +174,16 @@ export default function Work() {
                 <div className="relative z-10">
                   <h3 className="text-3xl font-extrabold text-white mb-2 group-hover:text-brand-blue transition-colors flex items-center justify-between">
                     <span>{project.title}</span>
-                    <ArrowUpRight className="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    <div className="w-10 h-10 rounded-full bg-white/10 border border-white/15 flex items-center justify-center text-white group-hover:bg-brand-blue group-hover:text-black group-hover:border-brand-blue transition-all duration-300 shrink-0">
+                      <ArrowUpRight className="w-5 h-5 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    </div>
                   </h3>
                   <p className="text-zinc-300 text-xs sm:text-sm font-light mb-6 line-clamp-2">
                     {project.tagline}
                   </p>
 
                   {/* Metrics Badge Strip */}
-                  <div className="grid grid-cols-3 gap-2 p-3 rounded-xl bg-black/50 backdrop-blur-md border border-white/10 mb-4">
+                  <div className="grid grid-cols-3 gap-2 p-3 rounded-2xl bg-black/50 backdrop-blur-md border border-white/10 mb-4">
                     {project.metrics.map((m) => (
                       <div key={m.label} className="text-center">
                         <span className="block font-mono text-sm font-bold text-white">
@@ -201,7 +201,7 @@ export default function Work() {
                     {project.stack.slice(0, 4).map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-0.5 rounded text-[10px] font-mono bg-white/10 text-zinc-200"
+                        className="px-3 py-1 rounded-full text-[10px] font-mono bg-white/10 text-zinc-200 border border-white/10"
                       >
                         {tech}
                       </span>
@@ -250,14 +250,16 @@ export default function Work() {
               <div className="relative z-10">
                 <h3 className="text-2xl font-extrabold text-white mb-2 group-hover:text-brand-blue transition-colors flex items-center justify-between">
                   <span>{project.title}</span>
-                  <ArrowUpRight className="w-5 h-5" />
+                  <div className="w-9 h-9 rounded-full bg-white/10 border border-white/15 flex items-center justify-center text-white group-hover:bg-brand-blue group-hover:text-black group-hover:border-brand-blue transition-all duration-300 shrink-0">
+                    <ArrowUpRight className="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </div>
                 </h3>
                 <p className="text-zinc-300 text-xs font-light mb-4 line-clamp-2">
                   {project.tagline}
                 </p>
 
                 {/* Metrics */}
-                <div className="grid grid-cols-3 gap-2 p-2.5 rounded-xl bg-black/50 backdrop-blur-md border border-white/10 mb-4">
+                <div className="grid grid-cols-3 gap-2 p-2.5 rounded-2xl bg-black/50 backdrop-blur-md border border-white/10 mb-4">
                   {project.metrics.map((m) => (
                     <div key={m.label} className="text-center">
                       <span className="block font-mono text-xs font-bold text-white">
@@ -275,7 +277,7 @@ export default function Work() {
                   {project.stack.slice(0, 3).map((tech) => (
                     <span
                       key={tech}
-                      className="px-2 py-0.5 rounded text-[9px] font-mono bg-white/10 text-zinc-200"
+                      className="px-2.5 py-0.5 rounded-full text-[9px] font-mono bg-white/10 text-zinc-200 border border-white/10"
                     >
                       {tech}
                     </span>

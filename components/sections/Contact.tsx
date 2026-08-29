@@ -1,8 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
+
+const ContactParticles = dynamic(() => import("@/components/3d/ContactParticles"), {
+  ssr: false,
+});
 import confetti from "canvas-confetti";
-import ContactParticles from "@/components/3d/ContactParticles";
 import CanvasContainer from "@/components/3d/CanvasContainer";
 import MagneticButton from "@/components/ui/MagneticButton";
 import { useAudioFx } from "@/hooks/useAudioFx";

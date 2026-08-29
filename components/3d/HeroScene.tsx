@@ -70,37 +70,46 @@ function MorphingCore({ mousePosRef }: { mousePosRef: React.MutableRefObject<{ n
         <icosahedronGeometry args={[1, 4]} />
         <MeshDistortMaterial
           color="#2563eb"
-          roughness={0.2}
-          metalness={0.8}
+          roughness={0.15}
+          metalness={0.85}
           distort={0.35}
           speed={2.2}
           wireframe={false}
         />
       </mesh>
 
-      {/* Outer Geometric Wireframe Cage */}
-      <mesh ref={wireframeRef} scale={2.4}>
-        <icosahedronGeometry args={[1, 1]} />
-        <meshStandardMaterial
-          color="#1d4ed8"
+      {/* Inner Soft Wireframe Facets */}
+      <mesh scale={1.61}>
+        <icosahedronGeometry args={[1, 2]} />
+        <meshBasicMaterial
+          color="#94a3b8"
           wireframe
           transparent
-          opacity={0.4}
-          roughness={0.3}
-          metalness={0.9}
+          opacity={0.18}
+        />
+      </mesh>
+
+      {/* Outer Geometric Hex Wireframe Cage - Soft Platinum Lines */}
+      <mesh ref={wireframeRef} scale={2.4}>
+        <icosahedronGeometry args={[1, 1]} />
+        <meshBasicMaterial
+          color="#e2e8f0"
+          wireframe
+          transparent
+          opacity={0.32}
         />
       </mesh>
 
       {/* Orbital Tech Ring 1 */}
       <mesh ref={ringRef1} scale={3.1} rotation={[Math.PI / 4, 0, 0]}>
         <torusGeometry args={[1, 0.012, 16, 100]} />
-        <meshBasicMaterial color="#3b82f6" transparent opacity={0.6} />
+        <meshBasicMaterial color="#5799EE" transparent opacity={0.65} />
       </mesh>
 
       {/* Orbital Tech Ring 2 */}
       <mesh ref={ringRef2} scale={3.6} rotation={[-Math.PI / 3, Math.PI / 6, 0]}>
         <torusGeometry args={[1, 0.008, 16, 100]} />
-        <meshBasicMaterial color="#60a5fa" transparent opacity={0.5} />
+        <meshBasicMaterial color="#5799EE" transparent opacity={0.5} />
       </mesh>
     </group>
   );

@@ -72,6 +72,7 @@ export default function FeaturedHoverShowcase() {
   return (
     <>
       <section
+        id="work"
         ref={containerRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={() => setActiveProjectIndex(null)}
@@ -123,9 +124,8 @@ export default function FeaturedHoverShowcase() {
                 >
                   {/* Row Hover Background Highlight */}
                   <div
-                    className={`absolute inset-x-0 inset-y-0 bg-gradient-to-r from-white/[0.04] via-white/[0.02] to-transparent transition-opacity duration-500 ${
-                      isHovered ? "opacity-100" : "opacity-0"
-                    }`}
+                    className={`absolute inset-x-0 inset-y-0 bg-gradient-to-r from-white/[0.04] via-white/[0.02] to-transparent transition-opacity duration-500 ${isHovered ? "opacity-100" : "opacity-0"
+                      }`}
                   />
 
                   {/* Left: Large Typography Project Name with Ultra-Smooth Left-to-Right Shift */}
@@ -134,9 +134,8 @@ export default function FeaturedHoverShowcase() {
                       0{idx + 1}
                     </span>
                     <h3
-                      className={`text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight transition-colors duration-300 ${
-                        isHovered ? "text-white" : "text-zinc-600"
-                      }`}
+                      className={`text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight transition-colors duration-300 ${isHovered ? "text-white" : "text-zinc-600"
+                        }`}
                     >
                       {project.title}
                     </h3>
@@ -157,7 +156,7 @@ export default function FeaturedHoverShowcase() {
                       {project.year}
                     </span>
 
-                    <div className="w-10 h-10 border border-white/10 group-hover:border-[#38BDF8] group-hover:bg-[#38BDF8] group-hover:text-black flex items-center justify-center text-zinc-400 transition-all duration-300 group-hover:rotate-45">
+                    <div className="w-10 h-10 rounded-full border border-white/10 group-hover:border-[#38BDF8] group-hover:bg-[#38BDF8] group-hover:text-black flex items-center justify-center text-zinc-400 transition-all duration-300 group-hover:rotate-45">
                       <ArrowUpRight className="w-5 h-5" />
                     </div>
                   </div>
@@ -167,16 +166,15 @@ export default function FeaturedHoverShowcase() {
           </div>
         </div>
 
-        {/* Buttery-Smooth GSAP Velocity-Tilted Mouse Follower Preview Card (NO borders, NO border-radius) */}
+        {/* Buttery-Smooth GSAP Velocity-Tilted Mouse Follower Preview Card with Rounded Shapes */}
         <div
           ref={cardRef}
-          className={`fixed top-0 left-0 pointer-events-none z-50 hidden md:block -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 ease-out ${
-            activeProjectIndex !== null
+          className={`fixed top-0 left-0 pointer-events-none z-50 hidden md:block -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 ease-out ${activeProjectIndex !== null
               ? "opacity-100 scale-100"
               : "opacity-0 scale-95 pointer-events-none"
-          }`}
+            }`}
         >
-          <div className="relative w-80 h-52 sm:w-96 sm:h-60 overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.95)]">
+          <div className="relative w-80 h-52 sm:w-96 sm:h-60 rounded-none border-0 overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.95)]">
             {/* Unsplash Image */}
             <img
               src={PROJECTS[displayIndex].image}
@@ -187,9 +185,9 @@ export default function FeaturedHoverShowcase() {
             {/* Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-            {/* Centered Rectangular VIEW Badge (No borders, No border-radius) */}
+            {/* Centered Compact Circular VIEW Button (0 border, perfect circle) */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="px-6 py-3 bg-white/25 backdrop-blur-md shadow-xl flex items-center justify-center text-white font-black text-xs tracking-widest uppercase">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/25 backdrop-blur-md border-0 shadow-xl flex items-center justify-center text-white font-black text-[10px] sm:text-xs tracking-widest uppercase hover:scale-110 transition-transform">
                 VIEW
               </div>
             </div>
@@ -199,7 +197,7 @@ export default function FeaturedHoverShowcase() {
               <span className="text-xs font-mono font-bold tracking-wider">
                 {PROJECTS[displayIndex].title}
               </span>
-              <span className="text-[10px] font-mono px-2.5 py-1 bg-black/80 text-[#38BDF8]">
+              <span className="text-[10px] font-mono px-2.5 py-1 rounded-none bg-black/80 text-[#38BDF8] border-0">
                 {PROJECTS[displayIndex].year}
               </span>
             </div>

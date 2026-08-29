@@ -84,7 +84,7 @@ export default function Team() {
                       href={member.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-1.5 rounded-md text-zinc-400 hover:text-white hover:bg-white/10 transition-colors"
+                      className="p-2 rounded-full border border-white/10 text-zinc-400 hover:text-white hover:border-brand-blue hover:bg-brand-blue/20 transition-all duration-300"
                       aria-label={`${member.name}'s GitHub profile`}
                     >
                       <Github className="w-4 h-4" />
@@ -95,7 +95,7 @@ export default function Team() {
                       href={member.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-1.5 rounded-md text-zinc-400 hover:text-white hover:bg-white/10 transition-colors"
+                      className="p-2 rounded-full border border-white/10 text-zinc-400 hover:text-white hover:border-brand-blue hover:bg-brand-blue/20 transition-all duration-300"
                       aria-label={`${member.name}'s LinkedIn profile`}
                     >
                       <Linkedin className="w-4 h-4" />

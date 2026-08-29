@@ -2,7 +2,11 @@
 
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
-import HeroScene from "@/components/3d/HeroScene";
+import dynamic from "next/dynamic";
+
+const HeroScene = dynamic(() => import("@/components/3d/HeroScene"), {
+  ssr: false,
+});
 import CanvasContainer from "@/components/3d/CanvasContainer";
 import MagneticButton from "@/components/ui/MagneticButton";
 import { useSmoothScroll } from "@/components/providers/SmoothScrollProvider";
@@ -52,7 +56,7 @@ export default function Hero() {
     <section
       id="hero"
       ref={heroRef}
-      className="relative w-full min-h-[calc(100vh-4.5rem)] flex items-center justify-center pt-4 sm:pt-8 pb-12 px-4 sm:px-6 md:px-12 overflow-hidden noise-bg"
+      className="relative w-full min-h-[calc(100vh-4.5rem)] flex items-center justify-center pt-4 sm:pt-8 pb-12 px-4 sm:px-6 md:px-12 overflow-hidden"
     >
       {/* 3D WebGL Canvas Layer */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -60,10 +64,6 @@ export default function Hero() {
           <HeroScene />
         </CanvasContainer>
       </div>
-
-      {/* Radial Glow Lighting Effects */}
-      <div className="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-blue/10 rounded-full blur-[140px]" />
-      <div className="pointer-events-none absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-brand-violet/10 rounded-full blur-[120px]" />
 
       {/* Content Container */}
       <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col items-center text-center">

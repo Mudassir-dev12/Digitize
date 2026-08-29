@@ -59,8 +59,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} dark`}>
-      <body className="bg-[#0A0A0A] text-zinc-100 antialiased selection:bg-brand-blue/30 selection:text-white">
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} dark`} suppressHydrationWarning>
+      <body className="bg-[#0A0A0A] text-zinc-100 antialiased selection:bg-brand-blue/30 selection:text-white" suppressHydrationWarning>
         <SmoothScrollProvider>
           <CustomCursor />
           {children}
