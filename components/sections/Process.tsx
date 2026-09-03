@@ -69,13 +69,6 @@ export default function Process() {
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-20">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-px bg-brand-blue" />
-            <span className="font-mono text-xs uppercase tracking-widest text-brand-blue">
-              SYSTEM ROADMAP // 04
-            </span>
-            <div className="w-8 h-px bg-brand-blue" />
-          </div>
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white uppercase mb-4">
             Engineering Protocol
           </h2>
@@ -99,12 +92,12 @@ export default function Process() {
                 className="process-item relative pl-6 sm:pl-10 group"
               >
                 {/* Timeline Step Node Indicator */}
-                <div className="absolute -left-[31px] sm:-left-[55px] top-1.5 w-6 h-6 rounded-full bg-[#09090c] border-2 border-brand-blue/60 group-hover:border-brand-blue flex items-center justify-center transition-all group-hover:scale-110 shadow-[0_0_10px_rgba(56,189,248,0.5)]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-blue" />
+                <div className="absolute -left-[31px] sm:-left-[55px] top-1.5 w-6 h-6 rounded-full bg-[#09090c] border-2 border-brand-blue/60 group-hover:border-brand-blue flex items-center justify-center transition-all group-hover:scale-125 shadow-[0_0_15px_rgba(56,189,248,0.7)]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-blue animate-ping" />
                 </div>
 
                 {/* Card Body */}
-                <div className="p-6 sm:p-8 rounded-2xl glass-card border border-white/[0.08] hover:border-brand-blue/40 transition-all duration-300">
+                <div className="p-6 sm:p-8 rounded-lg glass-card border border-white/[0.08] hover:border-brand-blue/40 transition-all duration-300">
                   {/* Top Tags */}
                   <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
                     <div className="flex items-center gap-3">
@@ -112,7 +105,7 @@ export default function Process() {
                         {step.step}
                       </span>
                       <span className="font-mono text-xs text-zinc-400 flex items-center gap-1">
-                        <Clock className="w-3.5 h-3.5 text-zinc-400" />
+                        <Clock className="w-3.5 h-3.5 text-zinc-400 icon-hover-wiggle" />
                         {step.duration}
                       </span>
                     </div>

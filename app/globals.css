@@ -66,13 +66,14 @@
   background: rgba(37, 99, 235, 0.6);
 }
 
-/* Luxury Glassmorphism & Card Specularity */
+/* Luxury Glassmorphism & Card Specularity - Minimal Border Radius (8px) */
 .glass-panel {
   background: rgba(9, 14, 26, 0.72);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.09);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  border-radius: 8px !important;
 }
 
 .glass-card {
@@ -82,11 +83,16 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: all 0.45 cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 8px !important;
 }
 
 .glass-card:hover {
   border-color: rgba(59, 130, 246, 0.45);
   box-shadow: 0 25px 60px rgba(37, 99, 235, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.card-minimal-round {
+  border-radius: 8px !important;
 }
 
 .glass-pill {
@@ -97,18 +103,24 @@
 
 /* Dynamic Aurora Background Animations */
 @keyframes aurora-slow {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate(0, 0) scale(1);
   }
+
   50% {
     transform: translate(40px, -30px) scale(1.08);
   }
 }
 
 @keyframes aurora-reverse {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate(0, 0) scale(1);
   }
+
   50% {
     transform: translate(-35px, 25px) scale(0.95);
   }
@@ -228,4 +240,61 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shimmer 4s infinite linear;
+}
+
+/* Automatic Continuous Icon & Text Micro-Animations (Auto-playing without hover) */
+@keyframes icon-auto-bounce {
+  0%, 100% { transform: translateY(0px) scale(1); filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.3)); }
+  50% { transform: translateY(-5px) scale(1.08); filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.7)); }
+}
+
+@keyframes icon-auto-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-7deg); }
+  75% { transform: rotate(7deg); }
+}
+
+@keyframes icon-auto-pulse-glow {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.3)); }
+  50% { transform: scale(1.12); filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.8)); }
+}
+
+@keyframes icon-auto-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(3deg); }
+}
+
+@keyframes icon-spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes text-auto-shimmer {
+  0%, 100% { opacity: 0.9; text-shadow: 0 0 8px rgba(56, 189, 248, 0.2); }
+  50% { opacity: 1; text-shadow: 0 0 18px rgba(56, 189, 248, 0.6); }
+}
+
+/* Auto-playing classes (Continuous, no hover required) */
+.animate-auto-bounce {
+  animation: icon-auto-bounce 3s ease-in-out infinite;
+}
+
+.animate-auto-wiggle {
+  animation: icon-auto-wiggle 4s ease-in-out infinite;
+}
+
+.animate-auto-pulse {
+  animation: icon-auto-pulse-glow 3.5s ease-in-out infinite;
+}
+
+.animate-auto-float {
+  animation: icon-auto-float 4.5s ease-in-out infinite;
+}
+
+.animate-auto-spin {
+  animation: icon-spin-slow 18s linear infinite;
+}
+
+.animate-text-shimmer-auto {
+  animation: text-auto-shimmer 4s ease-in-out infinite;
 }

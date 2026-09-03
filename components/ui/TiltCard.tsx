@@ -83,7 +83,7 @@ export default function TiltCard({
       }}
       data-cursor={dataCursor}
       className={cn(
-        "relative rounded-2xl overflow-hidden glass-card transition-shadow duration-300 transform-gpu cursor-pointer",
+        "relative rounded-lg overflow-hidden glass-card transition-shadow duration-300 transform-gpu cursor-pointer",
         className
       )}
       style={{ transformStyle: "preserve-3d" }}

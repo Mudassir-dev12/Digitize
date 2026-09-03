@@ -47,11 +47,11 @@ export default function DigitizeLogo({
           />
         </div>
       ) : (
-        <div className={`relative ${logoHeights[size]} shrink-0 group-hover:scale-[1.02] transition-transform duration-300 flex items-center`}>
+        <div className={`relative ${logoHeights[size]} shrink-0 group-hover:scale-105 transition-transform duration-500 flex items-center`}>
           <img
             src={logoSrc}
             alt="DIGITIZE. - Work Local Result Global"
-            className="h-full w-auto object-contain max-h-full transition-all duration-300 drop-shadow-[0_0_12px_rgba(255,255,255,0.2)]"
+            className="h-full w-auto object-contain max-h-full transition-all duration-500 drop-shadow-[0_0_12px_rgba(56,189,248,0.3)] group-hover:drop-shadow-[0_0_20px_rgba(56,189,248,0.7)]"
           />
         </div>
       )}

@@ -86,7 +86,7 @@ export default function MagneticButton({
       case "secondary":
         return "bg-white/10 hover:bg-white/15 text-white border border-white/15 backdrop-blur-md hover:border-white/30";
       case "glass":
-        return "glass-panel hover:bg-white/[0.08] text-white border-white/10 hover:border-brand-blue/40";
+        return "bg-[#090e1a]/80 backdrop-blur-xl hover:bg-white/[0.08] text-white border border-white/10 hover:border-brand-blue/40 shadow-lg";
       case "outline":
         return "bg-transparent border border-white/20 hover:border-brand-blue text-white hover:text-brand-blue";
       default:
@@ -96,7 +96,7 @@ export default function MagneticButton({
 
   const commonProps = {
     className: cn(
-      "relative inline-flex items-center justify-center px-6 py-3 rounded-full text-sm font-medium tracking-wide transition-colors duration-200 select-none overflow-hidden group",
+      "relative inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm font-medium tracking-wide transition-colors duration-200 select-none overflow-hidden group",
       getVariantStyles(),
       className
     ),

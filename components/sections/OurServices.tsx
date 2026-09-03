@@ -94,7 +94,7 @@ const SERVICES_LIST: ServiceItem[] = [
     description:
       "High-converting Shopify storefront customization, app integrations, CRO optimization, and automated fulfillment workflows.",
     image:
-      "https://images.unsplash.com/photo-1556742049-0a67414d59a8?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&auto=format&fit=crop&q=80",
     icon: Store,
     features: ["Custom Shopify Themes", "Conversion Rate (CRO)", "App & Payment Gateways", "Automated Workflows"],
     accentColor: "#10B981",
@@ -117,10 +117,6 @@ export default function OurServices() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-white/10">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/[0.04] border border-white/10 text-xs font-mono text-[#38BDF8] uppercase tracking-widest mb-4 rounded-full">
-              <span className="w-2 h-2 rounded-full bg-[#38BDF8] animate-pulse" />
-              CAPABILITIES & SOLUTIONS
-            </div>
             <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight uppercase">
               OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38BDF8] via-[#5799EE] to-white">SERVICES</span>
             </h2>
@@ -144,7 +140,7 @@ export default function OurServices() {
                   setActiveId(service.id);
                 }}
                 onMouseLeave={() => setActiveId(null)}
-                className="group relative rounded-3xl glass-card border border-white/10 hover:border-[#38BDF8]/50 transition-all duration-500 overflow-hidden flex flex-col justify-between"
+                className="group relative rounded-lg glass-card border border-white/10 hover:border-[#38BDF8]/50 transition-all duration-500 overflow-hidden flex flex-col justify-between"
               >
                 {/* Visual Image Preview Container */}
                 <div className="relative h-48 w-full overflow-hidden">
@@ -164,8 +160,8 @@ export default function OurServices() {
                   </div>
 
                   {/* Floating Corner Icon Badge */}
-                  <div className="absolute top-4 right-4 z-10 w-10 h-10 rounded-2xl bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-[#38BDF8] group-hover:scale-110 transition-transform">
-                    <Icon className="w-5 h-5" />
+                  <div className="absolute top-4 right-4 z-10 w-10 h-10 rounded-2xl bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-[#38BDF8]">
+                    <Icon className="w-5 h-5 animate-auto-bounce" />
                   </div>
                 </div>
 
@@ -185,7 +181,7 @@ export default function OurServices() {
                     <div className="grid grid-cols-2 gap-2 mb-4">
                       {service.features.map((feat, i) => (
                         <div key={i} className="flex items-center gap-1.5 text-[11px] font-mono text-zinc-400">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#38BDF8] shrink-0" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#38BDF8] shrink-0 animate-auto-wiggle" />
                           <span className="truncate">{feat}</span>
                         </div>
                       ))}
@@ -194,7 +190,7 @@ export default function OurServices() {
                     {/* CTA Link */}
                     <div className="flex items-center justify-between text-xs font-mono text-zinc-400 group-hover:text-[#38BDF8] transition-colors pt-2">
                       <span>Explore Capability</span>
-                      <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      <ArrowUpRight className="w-4 h-4 animate-auto-float" />
                     </div>
                   </div>
                 </div>

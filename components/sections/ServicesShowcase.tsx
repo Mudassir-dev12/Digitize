@@ -115,10 +115,6 @@ export default function ServicesShowcase() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-white/10">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/[0.04] border border-white/10 text-xs font-mono text-[#38BDF8] uppercase tracking-widest mb-4 rounded-full">
-              <span className="w-2 h-2 rounded-full bg-[#38BDF8] animate-pulse" />
-              CAPABILITIES & STACK
-            </div>
             <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight uppercase">
               SERVICES THAT <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38BDF8] via-[#5799EE] to-white">EMPOWER YOU</span>
             </h2>

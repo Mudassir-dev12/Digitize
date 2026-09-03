@@ -242,10 +242,6 @@ export default function Partnerships() {
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16 sm:mb-20">
           <div>
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-brand-blue/15 border border-brand-blue/30 text-xs font-mono text-brand-blue uppercase tracking-widest mb-4">
-              <span className="w-2 h-2 rounded-full bg-brand-blue animate-pulse" />
-              GLOBAL ECOSYSTEM // 04
-            </div>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white uppercase leading-tight">
               Powering Global Growth{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue via-cyan-400 to-white">
@@ -265,7 +261,7 @@ export default function Partnerships() {
             return (
               <div
                 key={idx}
-                className="group relative p-6 sm:p-7 rounded-2xl glass-card border border-white/10 hover:border-brand-blue/50 transition-all duration-300 flex flex-col justify-between"
+                className="group relative p-6 sm:p-7 rounded-lg glass-card border border-white/10 hover:border-brand-blue/50 transition-all duration-300 flex flex-col justify-between"
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className="w-10 h-10 rounded-xl bg-brand-blue/10 border border-brand-blue/20 flex items-center justify-center text-brand-blue group-hover:scale-110 transition-transform">
@@ -316,7 +312,7 @@ export default function Partnerships() {
         </div>
 
         {/* Selected Partnership Tier Header */}
-        <div className="p-8 sm:p-10 rounded-3xl glass-panel border border-brand-blue/30 bg-[#0a0d1d]/90 shadow-[0_25px_70px_rgba(0,0,0,0.9)] mb-12">
+        <div className="p-8 sm:p-10 rounded-lg glass-panel border border-brand-blue/30 bg-[#0a0d1d]/90 shadow-[0_25px_70px_rgba(0,0,0,0.9)] mb-12">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-white/10 mb-6">
             <div>
               <div className="flex items-center gap-2 mb-2">
@@ -334,7 +330,7 @@ export default function Partnerships() {
             </div>
 
             {/* Metric Highlight Box */}
-            <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center gap-4 shrink-0">
+            <div className="p-4 rounded-lg bg-white/[0.04] border border-white/10 flex items-center gap-4 shrink-0">
               <div className="text-right">
                 <span className="block font-mono text-2xl sm:text-3xl font-black text-brand-blue">
                   {selectedTier.metric}
@@ -359,7 +355,7 @@ export default function Partnerships() {
           {selectedTier.partners.map((partner, idx) => (
             <div
               key={idx}
-              className="group relative rounded-2xl border border-white/10 overflow-hidden bg-[#080b18] hover:border-brand-blue/60 transition-all duration-500 flex flex-col justify-between h-[380px] shadow-xl"
+              className="group relative rounded-lg border border-white/10 overflow-hidden bg-[#080b18] hover:border-brand-blue/60 transition-all duration-500 flex flex-col justify-between h-[380px] shadow-xl"
             >
               {/* High-Definition Background Image Layer */}
               <div className="absolute inset-0 z-0 overflow-hidden">

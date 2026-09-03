@@ -33,12 +33,6 @@ export default function Services() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 sm:mb-20">
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-px bg-brand-blue" />
-              <span className="font-mono text-xs uppercase tracking-widest text-brand-blue">
-                ENGINEERING PILLARS // 02
-              </span>
-            </div>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white uppercase">
               Capabilities & Architecture
             </h2>

@@ -36,7 +36,7 @@ export default function ExecutiveBusinessCard() {
       </div>
 
       {/* Interactive Business Card */}
-      <TiltCard className="w-full max-w-3xl aspect-[1.75/1] min-h-[340px] sm:min-h-[380px] rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.6)] transition-all duration-500 relative group">
+      <TiltCard className="w-full max-w-3xl aspect-[1.75/1] min-h-[340px] sm:min-h-[380px] rounded-lg overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.6)] transition-all duration-500 relative group">
         {viewMode === "card" ? (
           /* Official Print Business Card Aesthetic (Exact replica of user's image) */
           <div className="w-full h-full bg-[#FAFAFC] text-slate-900 p-6 sm:p-8 relative flex flex-col justify-between overflow-hidden select-none border border-slate-200">

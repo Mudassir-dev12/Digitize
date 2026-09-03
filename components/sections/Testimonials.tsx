@@ -46,13 +46,6 @@ export default function Testimonials() {
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-px bg-brand-blue" />
-            <span className="font-mono text-xs uppercase tracking-widest text-brand-blue">
-              VERIFIED VALIDATION // 06
-            </span>
-            <div className="w-8 h-px bg-brand-blue" />
-          </div>
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white uppercase mb-4">
             Client Voices
           </h2>
@@ -70,7 +63,7 @@ export default function Testimonials() {
         <div
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
-          className="relative p-8 sm:p-12 md:p-16 rounded-3xl glass-card border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.7)]"
+          className="relative p-8 sm:p-12 md:p-16 rounded-lg glass-card border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.7)]"
         >
           <Quote className="w-12 h-12 text-brand-blue/30 mb-8" />
 

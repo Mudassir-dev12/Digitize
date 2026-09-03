@@ -12,6 +12,9 @@ import Hero from "@/components/sections/Hero";
 import BentoStatsShowcase from "@/components/sections/BentoStatsShowcase";
 import FeaturedHoverShowcase from "@/components/sections/FeaturedHoverShowcase";
 import OurServices from "@/components/sections/OurServices";
+import ProjectHighlights from "@/components/sections/ProjectHighlights";
+import IndustriesWeEmpower from "@/components/sections/IndustriesWeEmpower";
+import CollaborationOpportunities from "@/components/sections/CollaborationOpportunities";
 import Footer from "@/components/sections/Footer";
 
 export default function Home() {
@@ -31,7 +34,11 @@ export default function Home() {
       <BentoStatsShowcase />
       <FeaturedHoverShowcase />
       <OurServices />
+      <ProjectHighlights />
+      <IndustriesWeEmpower />
+      <CollaborationOpportunities />
       <Footer />
     </main>
   );
 }
+

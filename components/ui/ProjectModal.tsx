@@ -88,7 +88,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
       <div
         ref={modalRef}
         data-lenis-prevent
-        className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-[#0e0e14] border border-white/15 shadow-[0_25px_80px_rgba(0,0,0,0.8)] text-white p-6 sm:p-8 md:p-10 scrollbar-thin"
+        className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-[#0e0e14] border border-white/15 rounded-lg shadow-[0_25px_80px_rgba(0,0,0,0.8)] text-white p-6 sm:p-8 md:p-10 scrollbar-thin"
       >
         {/* Close Button */}
         <button

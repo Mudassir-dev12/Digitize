@@ -75,12 +75,6 @@ export default function Work() {
       {/* Header Container */}
       <div className="max-w-7xl mx-auto pt-28 px-6 sm:px-12 flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         <div>
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-px bg-brand-blue" />
-            <span className="font-mono text-xs uppercase tracking-widest text-brand-blue">
-              FEATURED PRODUCTIONS // 03
-            </span>
-          </div>
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white uppercase">
             Engineered Flagships
           </h2>
@@ -120,7 +114,7 @@ export default function Work() {
             style={{ width: "max-content" }}
           >
             {/* Intro Card */}
-            <div className="w-[380px] h-[540px] rounded-3xl glass-card p-10 flex flex-col justify-between shrink-0 border border-white/10">
+            <div className="w-[380px] h-[540px] rounded-lg glass-card p-10 flex flex-col justify-between shrink-0 border border-white/10">
               <div>
                 <span className="font-mono text-xs text-brand-blue uppercase tracking-widest block mb-4">
                   PORTFOLIO ARCHIVE
@@ -145,7 +139,7 @@ export default function Work() {
               <div
                 key={project.id}
                 onClick={() => setSelectedProject(project)}
-                className="group relative w-[520px] h-[540px] rounded-3xl overflow-hidden glass-card border border-white/10 hover:border-brand-blue/60 transition-all duration-500 cursor-pointer shrink-0 flex flex-col justify-between p-8"
+                className="group relative w-[520px] h-[540px] rounded-lg overflow-hidden glass-card border border-white/10 hover:border-brand-blue/60 transition-all duration-500 cursor-pointer shrink-0 flex flex-col justify-between p-8"
                 data-cursor="view"
               >
                 {/* Background Image with Dark Vignette */}

@@ -85,13 +85,6 @@ export default function Contact() {
       <div className="relative z-10 max-w-5xl mx-auto">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-12">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-px bg-blue-500" />
-            <span className="font-mono text-xs uppercase tracking-widest text-blue-400">
-              DIRECT DISPATCH // 07
-            </span>
-            <div className="w-8 h-px bg-blue-500" />
-          </div>
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white uppercase mb-4">
             Initiate Architecture Sprint
           </h2>
@@ -106,7 +99,7 @@ export default function Contact() {
         </div>
 
         {/* Contact Container */}
-        <div className="p-8 sm:p-12 md:p-14 rounded-3xl glass-card border border-white/15 shadow-[0_25px_80px_rgba(0,0,0,0.8)]">
+        <div className="p-8 sm:p-12 md:p-14 rounded-lg glass-card border border-white/15 shadow-[0_25px_80px_rgba(0,0,0,0.8)]">
           {isSubmitted ? (
             <div className="text-center py-16 flex flex-col items-center animate-fade-in">
               <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 mb-6 shadow-[0_0_25px_rgba(16,185,129,0.5)]">
@@ -141,11 +134,10 @@ export default function Contact() {
                         key={svc}
                         type="button"
                         onClick={() => toggleService(svc)}
-                        className={`px-4 py-2.5 rounded-full text-xs font-mono transition-all duration-200 ${
-                          active
+                        className={`px-4 py-2.5 rounded-full text-xs font-mono transition-all duration-200 ${active
                             ? "bg-brand-blue text-black font-bold shadow-[0_0_15px_rgba(56,189,248,0.4)]"
                             : "bg-white/[0.04] text-zinc-300 border border-white/10 hover:border-white/25 hover:bg-white/[0.08]"
-                        }`}
+                          }`}
                       >
                         {svc}
                       </button>
@@ -158,7 +150,7 @@ export default function Contact() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                   <label className="block font-mono text-xs uppercase tracking-widest text-brand-blue mb-4 flex items-center gap-2">
-                    <DollarSign className="w-4 h-4" /> 02 // ESTIMATED BUDGET TIER
+                    <DollarSign className="w-4 h-4 animate-auto-wiggle text-[#38BDF8]" /> 02 // ESTIMATED BUDGET TIER
                   </label>
                   <div className="grid grid-cols-2 gap-2">
                     {budgetList.map((b) => (
@@ -169,11 +161,10 @@ export default function Contact() {
                           playClick();
                           setBudgetTier(b);
                         }}
-                        className={`p-3 rounded-xl text-xs font-mono transition-all duration-200 text-center ${
-                          budgetTier === b
+                        className={`p-3 rounded-xl text-xs font-mono transition-all duration-200 text-center ${budgetTier === b
                             ? "bg-brand-violet text-white font-bold border-brand-violet shadow-[0_0_15px_rgba(139,92,246,0.4)]"
                             : "bg-white/[0.03] text-zinc-400 border border-white/10 hover:border-white/20"
-                        }`}
+                          }`}
                       >
                         {b}
                       </button>
@@ -183,7 +174,7 @@ export default function Contact() {
 
                 <div>
                   <label className="block font-mono text-xs uppercase tracking-widest text-brand-blue mb-4 flex items-center gap-2">
-                    <Calendar className="w-4 h-4" /> 03 // TARGET LAUNCH TIMELINE
+                    <Calendar className="w-4 h-4 animate-auto-bounce text-[#38BDF8]" /> 03 // TARGET LAUNCH TIMELINE
                   </label>
                   <div className="grid grid-cols-2 gap-2">
                     {timelineList.map((t) => (
@@ -194,11 +185,10 @@ export default function Contact() {
                           playClick();
                           setTimeline(t);
                         }}
-                        className={`p-3 rounded-xl text-xs font-mono transition-all duration-200 text-center ${
-                          timeline === t
+                        className={`p-3 rounded-xl text-xs font-mono transition-all duration-200 text-center ${timeline === t
                             ? "bg-brand-blue text-black font-bold border-brand-blue shadow-[0_0_15px_rgba(56,189,248,0.4)]"
                             : "bg-white/[0.03] text-zinc-400 border border-white/10 hover:border-white/20"
-                        }`}
+                          }`}
                       >
                         {t}
                       </button>

@@ -1,133 +1,163 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { WORLD_CLOCKS, STUDIO_INFO } from "@/lib/data";
-import { ArrowUp, Github, Linkedin, Twitter, Globe, ArrowRight, Shield } from "lucide-react";
+import { useState } from "react";
+import {
+  MessageSquare,
+  Facebook,
+  Instagram,
+  Twitter,
+  Linkedin,
+  ArrowUp,
+  ArrowRight,
+} from "lucide-react";
 import { useSmoothScroll } from "@/components/providers/SmoothScrollProvider";
 import DigitizeLogo from "@/components/ui/DigitizeLogo";
-import MagneticButton from "@/components/ui/MagneticButton";
+import { soundManager } from "@/lib/sound";
 
 export default function Footer() {
-  const [times, setTimes] = useState<Record<string, string>>({});
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
   const { scrollTo } = useSmoothScroll();
 
-  useEffect(() => {
-    const updateTimes = () => {
-      const newTimes: Record<string, string> = {};
-      WORLD_CLOCKS.forEach((clock) => {
-        try {
-          const formatter = new Intl.DateTimeFormat("en-US", {
-            timeZone: clock.tz,
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-            hour12: false,
-          });
-          newTimes[clock.code] = formatter.format(new Date());
-        } catch {
-          newTimes[clock.code] = "--:--:--";
-        }
-      });
-      setTimes(newTimes);
-    };
-
-    updateTimes();
-    const interval = setInterval(updateTimes, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
   const handleNewsletter = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newsletterEmail) return;
+    soundManager.playClick();
     setNewsletterSubmitted(true);
   };
 
   return (
-    <footer className="relative w-full bg-[#050507] border-t border-white/10 pt-20 pb-12 px-6 sm:px-12 select-none overflow-hidden">
+    <footer className="relative w-full bg-[#07070a] text-white pt-20 pb-10 px-6 sm:px-12 border-t border-white/10 select-none overflow-hidden">
       {/* Background Lighting */}
-      <div className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-brand-blue/5 rounded-full blur-[160px]" />
+      <div className="pointer-events-none absolute bottom-0 left-1/3 w-[600px] h-[300px] bg-[#38BDF8]/5 rounded-full blur-[160px]" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Top World Clocks Bar */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-5 rounded-2xl glass-panel border border-white/10 mb-16">
-          {WORLD_CLOCKS.map((clock) => (
-            <div key={clock.code} className="flex flex-col items-center sm:items-start p-2">
-              <div className="flex items-center gap-2 mb-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="font-mono text-[10px] text-zinc-400 tracking-wider">
-                  {clock.city} ({clock.offset})
-                </span>
-              </div>
-              <span className="font-mono text-base sm:text-lg font-bold text-white tracking-widest">
-                {times[clock.code] || "12:00:00"}
-              </span>
-            </div>
-          ))}
-        </div>
-
-        {/* Main Footer Navigation Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
-          {/* Studio Brand Info */}
-          <div className="md:col-span-5 flex flex-col justify-between">
+        {/* Main 4-Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 mb-16">
+          
+          {/* Column 1: Studio Logo, Tagline, Contact Info & Social Icons */}
+          <div className="md:col-span-4 flex flex-col justify-between">
             <div>
-              <div className="mb-4">
+              {/* Logo */}
+              <div className="mb-6">
                 <DigitizeLogo variant="full" size="md" theme="dark" />
               </div>
-              <p className="text-zinc-400 text-sm font-light leading-relaxed max-w-sm mb-6">
-                Full-stack software engineering, bespoke digital architecture, and high-scale web platforms led by Founder & CEO Madni Silat.
+
+              {/* Tagline */}
+              <p className="text-zinc-400 text-xs sm:text-sm font-light leading-relaxed max-w-sm mb-6">
+                Because if your workplace software can't handle all the current disruptions, neither will your workplace.
               </p>
 
-              {/* Direct Info List */}
-              <div className="space-y-2 mb-6 font-mono text-xs text-zinc-300">
-                <p><span className="text-blue-400">FOUNDER & CEO:</span> {STUDIO_INFO.founder}</p>
-                <p><span className="text-blue-400">PHONE:</span> {STUDIO_INFO.phone}</p>
-                <p><span className="text-blue-400">EMAIL:</span> {STUDIO_INFO.email}</p>
-                <p><span className="text-blue-400">HQ:</span> {STUDIO_INFO.address}</p>
+              {/* Contact Metadata with Blue Labels */}
+              <div className="space-y-2 mb-8 text-xs sm:text-sm">
+                <p>
+                  <span className="text-[#38BDF8] font-bold">Email:</span>{" "}
+                  <a href="mailto:info@digitizepk.com" className="text-zinc-300 hover:text-white transition-colors">
+                    info@digitizepk.com
+                  </a>
+                </p>
+                <p>
+                  <span className="text-[#38BDF8] font-bold">Phone:</span>{" "}
+                  <a href="tel:+923366532777" className="text-zinc-300 hover:text-white transition-colors">
+                    +92 336 6532777
+                  </a>
+                </p>
+                <p>
+                  <span className="text-[#38BDF8] font-bold">Address:</span>{" "}
+                  <span className="text-zinc-300">FB Area Block 3 Karimabad</span>
+                </p>
               </div>
-            </div>
 
-            <div className="flex items-center gap-3 text-xs font-mono text-zinc-400">
-              <Shield className="w-4 h-4 text-emerald-400" />
-              <span>SOC2 Type II & Enterprise SLA Compliant</span>
+              {/* Round Dark Social Media Icon Buttons */}
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://wa.me/923366532777"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onMouseEnter={() => soundManager.playHover()}
+                  className="w-10 h-10 rounded-full bg-white/[0.08] hover:bg-[#38BDF8] text-zinc-300 hover:text-slate-950 border border-white/10 flex items-center justify-center transition-all duration-300 shadow-md"
+                  aria-label="WhatsApp"
+                >
+                  <MessageSquare className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onMouseEnter={() => soundManager.playHover()}
+                  className="w-10 h-10 rounded-full bg-white/[0.08] hover:bg-[#38BDF8] text-zinc-300 hover:text-slate-950 border border-white/10 flex items-center justify-center transition-all duration-300 shadow-md"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onMouseEnter={() => soundManager.playHover()}
+                  className="w-10 h-10 rounded-full bg-white/[0.08] hover:bg-[#38BDF8] text-zinc-300 hover:text-slate-950 border border-white/10 flex items-center justify-center transition-all duration-300 shadow-md"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onMouseEnter={() => soundManager.playHover()}
+                  className="w-10 h-10 rounded-full bg-white/[0.08] hover:bg-[#38BDF8] text-zinc-300 hover:text-slate-950 border border-white/10 flex items-center justify-center transition-all duration-300 shadow-md"
+                  aria-label="Twitter"
+                >
+                  <Twitter className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onMouseEnter={() => soundManager.playHover()}
+                  className="w-10 h-10 rounded-full bg-white/[0.08] hover:bg-[#38BDF8] text-zinc-300 hover:text-slate-950 border border-white/10 flex items-center justify-center transition-all duration-300 shadow-md"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="w-4 h-4" />
+                </a>
+              </div>
             </div>
           </div>
 
-          {/* Directory Links */}
-          <div className="md:col-span-3 flex flex-col gap-3">
-            <span className="font-mono text-xs text-brand-blue uppercase tracking-widest mb-2">
-              STUDIO DIRECTORY
-            </span>
-            <a
-              href="#work"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollTo("#work");
-              }}
-              className="text-sm text-zinc-400 hover:text-white transition-colors"
-            >
-              Selected Flagships
-            </a>
-            <a
-              href="#services"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollTo("#services");
-              }}
-              className="text-sm text-zinc-400 hover:text-white transition-colors"
-            >
-              Engineering Pillars
-            </a>
+          {/* Column 2: RESOURCES */}
+          <div className="md:col-span-2 flex flex-col gap-3">
+            <h4 className="font-extrabold text-sm text-white uppercase tracking-wider mb-3">
+              RESOURCES
+            </h4>
             <a
               href="#about"
               onClick={(e) => {
                 e.preventDefault();
                 scrollTo("#about");
               }}
-              className="text-sm text-zinc-400 hover:text-white transition-colors"
+              className="text-xs sm:text-sm text-zinc-400 hover:text-white transition-colors"
             >
-              Philosophy & Manifesto
+              Why DIGITIZE?
+            </a>
+            <a
+              href="#testimonials"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo("#testimonials");
+              }}
+              className="text-xs sm:text-sm text-zinc-400 hover:text-white transition-colors"
+            >
+              Customer Stories
+            </a>
+            <a
+              href="#work"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo("#work");
+              }}
+              className="text-xs sm:text-sm text-zinc-400 hover:text-white transition-colors"
+            >
+              Blog & Case Studies
             </a>
             <a
               href="#process"
@@ -135,9 +165,26 @@ export default function Footer() {
                 e.preventDefault();
                 scrollTo("#process");
               }}
-              className="text-sm text-zinc-400 hover:text-white transition-colors"
+              className="text-xs sm:text-sm text-zinc-400 hover:text-white transition-colors"
             >
-              Engineering Protocol
+              Guides & Webinars
+            </a>
+          </div>
+
+          {/* Column 3: COMPANY */}
+          <div className="md:col-span-2 flex flex-col gap-3">
+            <h4 className="font-extrabold text-sm text-white uppercase tracking-wider mb-3">
+              COMPANY
+            </h4>
+            <a
+              href="#about"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo("#about");
+              }}
+              className="text-xs sm:text-sm text-zinc-400 hover:text-white transition-colors"
+            >
+              About Us
             </a>
             <a
               href="#team"
@@ -145,40 +192,63 @@ export default function Footer() {
                 e.preventDefault();
                 scrollTo("#team");
               }}
-              className="text-sm text-zinc-400 hover:text-white transition-colors"
+              className="text-xs sm:text-sm text-zinc-400 hover:text-white transition-colors"
             >
-              Principal Team
+              Careers
+            </a>
+            <a
+              href="#team"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo("#team");
+              }}
+              className="text-xs sm:text-sm text-zinc-400 hover:text-white transition-colors"
+            >
+              Our Team
+            </a>
+            <a
+              href="#services"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo("#services");
+              }}
+              className="text-xs sm:text-sm text-zinc-400 hover:text-white transition-colors"
+            >
+              Services
             </a>
           </div>
 
-          {/* Dispatch Newsletter */}
+          {/* Column 4: NEWSLETTER */}
           <div className="md:col-span-4 flex flex-col justify-between">
             <div>
-              <span className="font-mono text-xs text-brand-violet uppercase tracking-widest block mb-2">
-                SYSTEMS DISPATCH
+              <span className="font-mono text-xs text-[#38BDF8] uppercase tracking-widest block mb-2 font-bold">
+                NEWSLETTER
               </span>
-              <p className="text-zinc-400 text-xs font-light mb-4">
-                Quarterly technical essays on Rust WebAssembly, distributed systems, and WebGL shader architecture.
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-3">
+                Subscribe to Newsletter
+              </h3>
+              <p className="text-zinc-400 text-xs sm:text-sm font-light mb-6">
+                Stay updated with our latest news and enterprise solutions.
               </p>
 
               {newsletterSubmitted ? (
-                <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-xs font-mono text-emerald-400">
-                  ✓ Transmitted. You will receive our next quarterly dispatch.
+                <div className="p-4 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-xs font-mono text-emerald-400">
+                  ✓ Subscribed! You will receive our latest updates.
                 </div>
               ) : (
-                <form onSubmit={handleNewsletter} className="flex items-center gap-2">
+                <form onSubmit={handleNewsletter} className="relative flex items-center w-full max-w-md">
                   <input
                     type="email"
                     required
-                    placeholder="engineer@company.com"
+                    placeholder="Enter your email..."
                     value={newsletterEmail}
                     onChange={(e) => setNewsletterEmail(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-zinc-500 text-xs focus:outline-none focus:border-brand-blue"
+                    className="w-full px-6 py-3.5 rounded-full bg-white text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#38BDF8] pr-14 shadow-lg"
                   />
                   <button
                     type="submit"
                     aria-label="Subscribe to newsletter"
-                    className="px-4 py-2.5 rounded-xl bg-brand-blue text-black font-mono font-bold text-xs hover:bg-brand-blue/90 transition-colors"
+                    className="absolute right-1.5 w-10 h-10 rounded-full bg-[#181FA1] hover:bg-[#38BDF8] text-white hover:text-slate-950 flex items-center justify-center transition-all duration-300 shadow-md"
                   >
                     <ArrowRight className="w-4 h-4" />
                   </button>
@@ -186,57 +256,32 @@ export default function Footer() {
               )}
             </div>
 
-            {/* Socials & Back to Top */}
-            <div className="flex items-center justify-between pt-6 border-t border-white/10 mt-6">
-              <div className="flex items-center gap-3">
-                <a
-                  href="https://github.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-white/[0.04] text-zinc-400 hover:text-white hover:bg-white/10 transition-colors"
-                  aria-label="GitHub"
-                >
-                  <Github className="w-4 h-4" />
-                </a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-white/[0.04] text-zinc-400 hover:text-white hover:bg-white/10 transition-colors"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin className="w-4 h-4" />
-                </a>
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-white/[0.04] text-zinc-400 hover:text-white hover:bg-white/10 transition-colors"
-                  aria-label="Twitter / X"
-                >
-                  <Twitter className="w-4 h-4" />
-                </a>
-              </div>
-
-              <MagneticButton
-                variant="glass"
-                onClick={() => scrollTo("#hero")}
-                className="text-xs px-3.5 py-2 font-mono flex items-center gap-1.5"
+            {/* Back to Top Quick Action */}
+            <div className="mt-8 flex justify-end">
+              <button
+                onClick={() => {
+                  soundManager.playClick();
+                  scrollTo("#hero");
+                }}
+                className="flex items-center gap-2 text-xs font-mono text-zinc-400 hover:text-[#38BDF8] transition-colors"
               >
-                <span>TOP</span>
-                <ArrowUp className="w-3.5 h-3.5" />
-              </MagneticButton>
+                <span>BACK TO TOP</span>
+                <ArrowUp className="w-4 h-4" />
+              </button>
             </div>
           </div>
+
         </div>
 
-        {/* Bottom Legal Copyright */}
-        <div className="pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-400">
-          <p>© {new Date().getFullYear()} DIGITIZE. WORK LOCAL RESULT GLOBAL. ALL RIGHTS RESERVED.</p>
-          <div className="flex items-center gap-6">
-            <span>KARACHI (HQ) • SAN FRANCISCO • LONDON • TOKYO</span>
-            <span className="text-zinc-400">|</span>
-            <span className="text-blue-500 font-bold">60 FPS PERFORMANCE</span>
+        {/* Bottom Legal Copyright Bar */}
+        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400 font-light">
+          <p>© 2026 DIGITIZE. All rights reserved.</p>
+
+          <div className="flex items-center gap-6 text-xs text-zinc-400">
+            <a href="#hero" className="hover:text-white transition-colors">Support</a>
+            <a href="#hero" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#hero" className="hover:text-white transition-colors">Terms of Use</a>
+            <a href="#hero" className="hover:text-white transition-colors">Cookie Policy</a>
           </div>
         </div>
       </div>
