@@ -58,8 +58,8 @@ export default function Footer() {
                 </p>
                 <p>
                   <span className="text-[#38BDF8] font-bold">Phone:</span>{" "}
-                  <a href="tel:+923366532777" className="text-zinc-300 hover:text-white transition-colors">
-                    +92 336 6532777
+                  <a href="tel:+923322632311" className="text-zinc-300 hover:text-white transition-colors">
+                    +92 332 2632311
                   </a>
                 </p>
                 <p>
@@ -71,7 +71,7 @@ export default function Footer() {
               {/* Round Dark Social Media Icon Buttons */}
               <div className="flex items-center gap-3">
                 <a
-                  href="https://wa.me/923366532777"
+                  href="https://wa.me/923322632311"
                   target="_blank"
                   rel="noopener noreferrer"
                   onMouseEnter={() => soundManager.playHover()}

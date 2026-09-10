@@ -166,6 +166,46 @@ export default function Navbar() {
             </div>
 
             <a
+              href="#vision"
+              onClick={(e) => handleNavClick(e, "#vision")}
+              className={`relative py-1 transition-colors duration-300 group ${
+                isScrolled
+                  ? "text-white hover:text-[#38BDF8] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+                  : "text-slate-900 hover:text-[#181FA1]"
+              }`}
+              onMouseEnter={() => soundManager.playHover()}
+            >
+              <span>Vision</span>
+              <span
+                className={`absolute bottom-0 left-0 w-0 h-[2.5px] transition-all duration-300 rounded-full group-hover:w-full ${
+                  isScrolled
+                    ? "bg-gradient-to-r from-[#38BDF8] via-[#2563EB] to-white"
+                    : "bg-gradient-to-r from-[#181FA1] to-[#2563EB]"
+                }`}
+              />
+            </a>
+
+            <a
+              href="#mission"
+              onClick={(e) => handleNavClick(e, "#mission")}
+              className={`relative py-1 transition-colors duration-300 group ${
+                isScrolled
+                  ? "text-white hover:text-[#38BDF8] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+                  : "text-slate-900 hover:text-[#181FA1]"
+              }`}
+              onMouseEnter={() => soundManager.playHover()}
+            >
+              <span>Mission</span>
+              <span
+                className={`absolute bottom-0 left-0 w-0 h-[2.5px] transition-all duration-300 rounded-full group-hover:w-full ${
+                  isScrolled
+                    ? "bg-gradient-to-r from-[#38BDF8] via-[#2563EB] to-white"
+                    : "bg-gradient-to-r from-[#181FA1] to-[#2563EB]"
+                }`}
+              />
+            </a>
+
+            <a
               href="#team"
               onClick={(e) => handleNavClick(e, "#team")}
               className={`relative py-1 transition-colors duration-300 group ${
@@ -291,6 +331,24 @@ export default function Navbar() {
             >
               <span>Services</span>
               <ChevronDown className={`w-5 h-5 ${isScrolled ? "text-zinc-400" : "text-slate-400"}`} />
+            </a>
+            <a
+              href="#vision"
+              onClick={(e) => handleNavClick(e, "#vision")}
+              className={`text-xl font-extrabold pb-3 border-b ${
+                isScrolled ? "border-white/10 hover:text-[#38BDF8]" : "border-slate-100 hover:text-[#181FA1]"
+              }`}
+            >
+              Vision
+            </a>
+            <a
+              href="#mission"
+              onClick={(e) => handleNavClick(e, "#mission")}
+              className={`text-xl font-extrabold pb-3 border-b ${
+                isScrolled ? "border-white/10 hover:text-[#38BDF8]" : "border-slate-100 hover:text-[#181FA1]"
+              }`}
+            >
+              Mission
             </a>
             <a
               href="#team"

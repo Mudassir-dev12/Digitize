@@ -119,31 +119,39 @@ export default function ProjectHighlights() {
       {/* Interactive Infinite Marquee Container (Right to Left Animation) */}
       <div className="relative w-full overflow-hidden py-4 group">
         <div
-          className={`flex gap-6 w-max animate-marquee ${
-            hoveredId ? "[animation-play-state:paused]" : ""
+          className={`flex gap-4 sm:gap-6 w-max animate-marquee ${
+            hoveredId ? "sm:[animation-play-state:paused]" : ""
           }`}
         >
           {marqueeItems.map((item, index) => {
-            const isHovered = hoveredId === `${item.id}-${index}`;
+            const itemKey = `${item.id}-${index}`;
+            const isHovered = hoveredId === itemKey;
             const Icon = item.icon;
 
             return (
               <div
-                key={`${item.id}-${index}`}
+                key={itemKey}
                 onMouseEnter={() => {
+                  if (typeof window !== "undefined" && window.innerWidth < 640) return;
                   soundManager.playHover();
-                  setHoveredId(`${item.id}-${index}`);
+                  setHoveredId(itemKey);
                 }}
-                onMouseLeave={() => setHoveredId(null)}
-                className={`relative rounded-lg glass-card transition-all duration-500 cursor-pointer overflow-hidden select-none shrink-0 ${
+                onMouseLeave={() => {
+                  if (typeof window !== "undefined" && window.innerWidth < 640) return;
+                  setHoveredId(null);
+                }}
+                onClick={() => {
+                  if (typeof window !== "undefined" && window.innerWidth < 640) return;
+                }}
+                className={`relative rounded-lg glass-card transition-all duration-500 overflow-hidden select-none shrink-0 ${
                   isHovered
-                    ? "w-[540px] sm:w-[600px] bg-[#0a1224]/95 border-2 border-[#38BDF8] shadow-[0_0_45px_rgba(56,189,248,0.4)] scale-[1.02]"
-                    : "w-[260px] sm:w-[280px] bg-[#070b16]/90 border border-white/10 hover:border-[#38BDF8]/50"
+                    ? "w-[240px] sm:w-[600px] bg-[#0a1224]/95 border border-white/10 sm:border-2 sm:border-[#38BDF8] sm:shadow-[0_0_45px_rgba(56,189,248,0.4)] sm:scale-[1.02]"
+                    : "w-[240px] sm:w-[280px] bg-[#070b16]/90 border border-white/10 hover:border-[#38BDF8]/50"
                 }`}
               >
-                {isHovered ? (
-                  /* Expanded Active Card View - Displays Product Image & Details */
-                  <div className="p-6 sm:p-7 flex flex-col sm:flex-row items-center justify-between gap-6 h-[250px] relative z-10">
+                {/* Expanded Active Card View - Desktop Only */}
+                {isHovered && (
+                  <div className="hidden sm:flex p-6 sm:p-7 flex-row items-center justify-between gap-6 h-[250px] relative z-10">
                     {/* Left Column: Details & Brand Logo */}
                     <div className="flex-1 flex flex-col justify-between h-full pr-2">
                       <div>
@@ -182,7 +190,7 @@ export default function ProjectHighlights() {
                     </div>
 
                     {/* Right Column: High-Resolution Product Image Preview Container */}
-                    <div className="w-full sm:w-[200px] h-[160px] rounded-lg bg-slate-950 border border-white/20 shrink-0 shadow-2xl relative overflow-hidden group-hover:scale-105 transition-transform duration-500">
+                    <div className="w-[200px] h-[160px] rounded-lg bg-slate-950 border border-white/20 shrink-0 shadow-2xl relative overflow-hidden group-hover:scale-105 transition-transform duration-500">
                       <img
                         src={item.productImage}
                         alt={`${item.client} Product Showcase`}
@@ -191,17 +199,19 @@ export default function ProjectHighlights() {
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
                     </div>
                   </div>
-                ) : (
-                  /* Collapsed Default Card View - Dark Glassmorphism Theme */
-                  <div className="p-6 flex flex-col justify-between h-[250px] relative z-10">
+                )}
+
+                {/* Collapsed Name View - Always Active on Mobile */}
+                {(!isHovered || true) && (
+                  <div className={`${isHovered ? "flex sm:hidden" : "flex"} p-5 sm:p-6 flex-col justify-between h-[230px] sm:h-[250px] relative z-10`}>
                     {/* Brand Logo Container */}
-                    <div className="w-14 h-14 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-[#38BDF8] mb-4">
-                      <Icon className="w-7 h-7 animate-auto-bounce" style={{ color: item.accentColor }} />
+                    <div className="w-12 sm:w-14 h-12 sm:h-14 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-[#38BDF8] mb-4">
+                      <Icon className="w-6 sm:w-7 h-6 sm:h-7 animate-auto-bounce" style={{ color: item.accentColor }} />
                     </div>
 
                     {/* Title & Subtitle Tag */}
                     <div>
-                      <h3 className="text-lg font-black text-white tracking-tight mb-1 group-hover:text-[#38BDF8] transition-colors">
+                      <h3 className="text-base sm:text-lg font-black text-white tracking-tight mb-1 group-hover:text-[#38BDF8] transition-colors">
                         {item.client}
                       </h3>
                       <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider block font-medium">
