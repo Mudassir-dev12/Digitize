@@ -38,7 +38,7 @@ const SERVICES_LIST: ServiceItem[] = [
     icon: Code2,
     features: ["Distributed Systems", "Cloud Backends", "API Architecture", "Database Optimization"],
     accentColor: "#38BDF8",
-    },
+  },
   {
     id: "app-development",
     title: "App Development",
@@ -106,9 +106,11 @@ export default function OurServices() {
 
   return (
     <section
-      id="our-services"
+      id="services"
+      data-section="our-services"
       className="relative w-full py-20 sm:py-28 px-4 sm:px-8 md:px-12 bg-[#030508] border-b border-white/10 overflow-hidden select-none"
     >
+      <div id="our-services" className="absolute -top-24 left-0 w-0 h-0 pointer-events-none" />
       {/* Background Ambient Glow Halos */}
       <div className="pointer-events-none absolute top-1/3 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-brand-blue/10 rounded-full blur-[170px]" />
       <div className="pointer-events-none absolute bottom-10 right-10 w-[500px] h-[400px] bg-sky-600/10 rounded-full blur-[150px]" />

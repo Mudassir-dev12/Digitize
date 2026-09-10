@@ -13,6 +13,7 @@ export default function Navbar() {
 
   // Interactive Dropdowns
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   const { scrollTo } = useSmoothScroll();
 
@@ -54,8 +55,8 @@ export default function Navbar() {
       <header
         className={`sticky top-0 z-[100] transition-all duration-500 w-full animate-in fade-in slide-in-from-top-4 duration-500 ${
           isScrolled
-            ? "bg-[#060913]/65 backdrop-blur-xl border-b border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
-            : "bg-white border-b border-slate-200/90 shadow-md"
+            ? "bg-[#060913]/90 backdrop-blur-xl border-b border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.8)] text-white"
+            : "bg-white border-b border-slate-200/90 shadow-sm text-slate-900"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between">
@@ -66,10 +67,15 @@ export default function Navbar() {
             className="flex items-center gap-2.5 group hover:scale-[1.02] transition-transform duration-300"
             onMouseEnter={() => soundManager.playHover()}
           >
-            <DigitizeLogo variant="full" size="sm" src={isScrolled ? "/2.png" : "/1.png"} theme={isScrolled ? "dark" : "light"} />
+            <DigitizeLogo
+              variant="full"
+              size="sm"
+              src={isScrolled ? "/2.png" : "/1.png"}
+              theme={isScrolled ? "dark" : "light"}
+            />
           </a>
 
-          {/* 2. Center: Navigation Links with Dynamic Scrolled Glass Transition */}
+          {/* 2. Center: Navigation Links */}
           <nav className="hidden lg:flex items-center gap-8 text-sm font-extrabold">
             <a
               href="#hero"
@@ -91,7 +97,7 @@ export default function Navbar() {
               />
             </a>
 
-            {/* Services with Smooth Hover Dropdown Menu */}
+            {/* Services Dropdown */}
             <div
               ref={servicesRef}
               className="relative py-2"
@@ -125,16 +131,15 @@ export default function Navbar() {
                 />
               </button>
 
-              {/* Glassmorphic / White Services Dropdown Menu */}
+              {/* Services Dropdown Menu */}
               {servicesDropdownOpen && (
                 <div
                   className={`absolute top-full left-0 mt-1 w-64 rounded-2xl shadow-2xl py-3 px-2 z-50 animate-in fade-in slide-in-from-top-3 duration-200 select-none ${
                     isScrolled
-                      ? "bg-[#0c1327]/95 backdrop-blur-2xl border border-white/15 shadow-[0_25px_60px_rgba(0,0,0,0.95)]"
-                      : "bg-white border border-slate-200/90 shadow-2xl"
+                      ? "bg-[#0c1327]/95 backdrop-blur-2xl border border-white/15 shadow-[0_25px_60px_rgba(0,0,0,0.95)] text-white"
+                      : "bg-white border border-slate-200/90 shadow-2xl text-slate-900"
                   }`}
                 >
-                  {/* All Services */}
                   <a
                     href="#services"
                     onClick={(e) => handleNavClick(e, "#services")}
@@ -303,86 +308,98 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer Menu: Always Dark Backdrop & Crisp White Text */}
       {mobileMenuOpen && (
-        <div
-          className={`fixed inset-0 z-40 lg:hidden flex flex-col justify-between px-6 pt-24 pb-8 animate-in fade-in duration-200 ${
-            isScrolled
-              ? "bg-[#060913]/98 backdrop-blur-2xl border-b border-white/10 text-white"
-              : "bg-white/98 backdrop-blur-2xl border-b border-slate-200 text-slate-900"
-          }`}
-        >
+        <div className="fixed inset-0 z-40 lg:hidden flex flex-col justify-between px-6 pt-24 pb-8 animate-in fade-in duration-200 bg-[#060913]/98 backdrop-blur-2xl border-b border-white/10 text-white">
           <div className="flex flex-col gap-5">
             <a
               href="#hero"
               onClick={(e) => handleNavClick(e, "#hero")}
-              className={`text-xl font-extrabold pb-3 border-b ${
-                isScrolled ? "border-white/10 hover:text-[#38BDF8]" : "border-slate-100 hover:text-[#181FA1]"
-              }`}
+              className="text-xl font-extrabold pb-3 border-b border-white/15 text-white hover:text-[#38BDF8] transition-colors"
             >
               Home
             </a>
-            <a
-              href="#services"
-              onClick={(e) => handleNavClick(e, "#services")}
-              className={`text-xl font-extrabold pb-3 border-b flex items-center justify-between ${
-                isScrolled ? "border-white/10 hover:text-[#38BDF8]" : "border-slate-100 hover:text-[#181FA1]"
-              }`}
-            >
-              <span>Services</span>
-              <ChevronDown className={`w-5 h-5 ${isScrolled ? "text-zinc-400" : "text-slate-400"}`} />
-            </a>
+            {/* Collapsible Mobile Services Item */}
+            <div className="border-b border-white/15 pb-3">
+              <button
+                onClick={() => {
+                  soundManager.playClick();
+                  setMobileServicesOpen(!mobileServicesOpen);
+                }}
+                className="w-full text-xl font-extrabold text-white hover:text-[#38BDF8] flex items-center justify-between transition-colors focus:outline-none"
+              >
+                <span>Services</span>
+                <ChevronDown
+                  className={`w-5 h-5 text-zinc-300 transition-transform duration-300 ${
+                    mobileServicesOpen ? "rotate-180 text-[#38BDF8]" : ""
+                  }`}
+                />
+              </button>
+
+              {/* Submenu showing all services list on mobile */}
+              {mobileServicesOpen && (
+                <div className="flex flex-col gap-2.5 mt-3 pl-4 border-l-2 border-[#38BDF8]/50 animate-in fade-in slide-in-from-top-2 duration-200">
+                  <a
+                    href="#services"
+                    onClick={(e) => handleNavClick(e, "#services")}
+                    className="text-base font-bold text-[#38BDF8] hover:text-white py-1 transition-colors flex items-center justify-between"
+                  >
+                    <span>All Services</span>
+                    <span className="text-xs">→</span>
+                  </a>
+
+                  {SERVICES.map((s) => (
+                    <a
+                      key={s.id}
+                      href="#services"
+                      onClick={(e) => handleNavClick(e, "#services")}
+                      className="text-sm font-semibold text-zinc-200 hover:text-white py-1 transition-colors"
+                    >
+                      {s.title}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
             <a
               href="#vision"
               onClick={(e) => handleNavClick(e, "#vision")}
-              className={`text-xl font-extrabold pb-3 border-b ${
-                isScrolled ? "border-white/10 hover:text-[#38BDF8]" : "border-slate-100 hover:text-[#181FA1]"
-              }`}
+              className="text-xl font-extrabold pb-3 border-b border-white/15 text-white hover:text-[#38BDF8] transition-colors"
             >
               Vision
             </a>
             <a
               href="#mission"
               onClick={(e) => handleNavClick(e, "#mission")}
-              className={`text-xl font-extrabold pb-3 border-b ${
-                isScrolled ? "border-white/10 hover:text-[#38BDF8]" : "border-slate-100 hover:text-[#181FA1]"
-              }`}
+              className="text-xl font-extrabold pb-3 border-b border-white/15 text-white hover:text-[#38BDF8] transition-colors"
             >
               Mission
             </a>
             <a
               href="#team"
               onClick={(e) => handleNavClick(e, "#team")}
-              className={`text-xl font-extrabold pb-3 border-b ${
-                isScrolled ? "border-white/10 hover:text-[#38BDF8]" : "border-slate-100 hover:text-[#181FA1]"
-              }`}
+              className="text-xl font-extrabold pb-3 border-b border-white/15 text-white hover:text-[#38BDF8] transition-colors"
             >
               Team
             </a>
             <a
               href="#work"
               onClick={(e) => handleNavClick(e, "#work")}
-              className={`text-xl font-extrabold pb-3 border-b ${
-                isScrolled ? "border-white/10 hover:text-[#38BDF8]" : "border-slate-100 hover:text-[#181FA1]"
-              }`}
+              className="text-xl font-extrabold pb-3 border-b border-white/15 text-white hover:text-[#38BDF8] transition-colors"
             >
               Projects
             </a>
             <a
               href="#about"
               onClick={(e) => handleNavClick(e, "#about")}
-              className={`text-xl font-extrabold pb-3 border-b ${
-                isScrolled ? "border-white/10 hover:text-[#38BDF8]" : "border-slate-100 hover:text-[#181FA1]"
-              }`}
+              className="text-xl font-extrabold pb-3 border-b border-white/15 text-white hover:text-[#38BDF8] transition-colors"
             >
               Blog
             </a>
             <a
               href="#contact"
               onClick={(e) => handleNavClick(e, "#contact")}
-              className={`text-xl font-extrabold pb-3 border-b ${
-                isScrolled ? "border-white/10 hover:text-[#38BDF8]" : "border-slate-100 hover:text-[#181FA1]"
-              }`}
+              className="text-xl font-extrabold pb-3 border-b border-white/15 text-white hover:text-[#38BDF8] transition-colors"
             >
               Contact
             </a>
