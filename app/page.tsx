@@ -14,6 +14,7 @@ import FeaturedHoverShowcase from "@/components/sections/FeaturedHoverShowcase";
 import OurServices from "@/components/sections/OurServices";
 import Vision from "@/components/sections/Vision";
 import Mission from "@/components/sections/Mission";
+import CeoShowcase from "@/components/sections/CeoShowcase";
 import ProjectHighlights from "@/components/sections/ProjectHighlights";
 import IndustriesWeEmpower from "@/components/sections/IndustriesWeEmpower";
 import CollaborationOpportunities from "@/components/sections/CollaborationOpportunities";
@@ -38,6 +39,7 @@ export default function Home() {
       <OurServices />
       <Vision />
       <Mission />
+      <CeoShowcase />
       <ProjectHighlights />
       <IndustriesWeEmpower />
       <CollaborationOpportunities />

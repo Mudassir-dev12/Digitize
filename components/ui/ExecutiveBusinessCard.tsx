@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { Phone, Mail, MapPin, Globe, QrCode } from "lucide-react";
+import Image from "next/image";
+import { Phone, Mail, MapPin, Globe, QrCode, ArrowUpRight } from "lucide-react";
 import TiltCard from "./TiltCard";
 import DigitizeLogo from "./DigitizeLogo";
 import { STUDIO_INFO } from "@/lib/data";
@@ -169,50 +170,60 @@ export default function ExecutiveBusinessCard() {
             </div>
           </div>
         ) : (
-          /* Cyber Dark Glassmorphic Card Edition */
-          <div className="w-full h-full bg-gradient-to-br from-[#0b1329] via-[#0d1838] to-[#070b18] text-white p-6 sm:p-10 relative flex flex-col justify-between border border-[#1B449C]/40 backdrop-blur-2xl">
-            <div className="flex items-center justify-between border-b border-white/10 pb-6">
-              <DigitizeLogo variant="full" size="md" theme="dark" />
-              <div className="px-3 py-1 rounded-full bg-[#1B449C]/20 border border-[#1B449C]/40 text-[10px] font-mono text-blue-400">
-                EXECUTIVE PASS
-              </div>
-            </div>
+          /* Cyber Dark Edition - Inspired by CEO Showcase Banner */
+          <div className="w-full h-full bg-gradient-to-br from-[#06102b] via-[#091538] to-[#040817] text-white p-4 sm:p-6 lg:p-8 relative flex flex-col justify-between border border-blue-500/40 shadow-[0_20px_50px_rgba(0,0,0,0.8)] overflow-hidden">
+            {/* Radial glow behind image */}
+            <div className="pointer-events-none absolute -left-16 top-1/2 -translate-y-1/2 w-[380px] h-[380px] bg-gradient-radial from-[#1e4cd8]/50 via-[#1636a0]/25 to-transparent rounded-full blur-[70px]" />
+            <div className="pointer-events-none absolute top-0 right-0 w-[240px] h-[240px] bg-[#2563eb]/10 rounded-full blur-[80px]" />
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 my-6">
-              <div>
-                <span className="text-[10px] font-mono text-blue-400 uppercase tracking-widest block mb-1">
-                  EXECUTIVE LEADERSHIP
-                </span>
-                <h3 className="text-2xl font-black text-white tracking-tight">
-                  {STUDIO_INFO.founder}
-                </h3>
-                <p className="text-xs font-mono text-zinc-400 uppercase tracking-widest font-semibold">
-                  {STUDIO_INFO.founderTitle}
-                </p>
+            <div className="relative z-10 grid grid-cols-12 h-full gap-4 items-center">
+              {/* Left Column: Cutout CEO Photo */}
+              <div className="col-span-5 sm:col-span-4 h-full relative flex items-end justify-center">
+                <div className="relative w-full h-[85%] sm:h-[95%] flex items-end justify-center">
+                  <Image
+                    src="/ceo.png"
+                    alt="Madni Silat - Founder and CEO digitize"
+                    width={935}
+                    height={1024}
+                    className="max-h-full w-auto object-contain object-bottom drop-shadow-[0_10px_25px_rgba(0,0,0,0.9)]"
+                  />
+                </div>
               </div>
 
-              <div className="space-y-3 font-mono text-xs text-zinc-300">
-                <p className="flex items-center gap-2">
-                  <Phone className="w-3.5 h-3.5 text-blue-400" />
-                  <span>{STUDIO_INFO.phone}</span>
-                </p>
-                <p className="flex items-center gap-2">
-                  <Mail className="w-3.5 h-3.5 text-blue-400" />
-                  <span className="truncate">{STUDIO_INFO.email}</span>
-                </p>
-                <p className="flex items-start gap-2">
-                  <MapPin className="w-3.5 h-3.5 text-blue-400 shrink-0 mt-0.5" />
-                  <span>{STUDIO_INFO.address}</span>
-                </p>
-              </div>
-            </div>
+              {/* Right Column: Information & Quote */}
+              <div className="col-span-7 sm:col-span-8 flex flex-col justify-between h-full py-1 sm:py-2 pl-2 sm:pl-4">
+                <div>
+                  <div className="w-10 h-1 bg-[#2563eb] rounded-full mb-2 sm:mb-3 shadow-[0_0_10px_rgba(37,99,235,0.8)]" />
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white tracking-wide leading-tight">
+                    {STUDIO_INFO.founder}
+                  </h3>
+                  <p className="text-xs sm:text-sm font-bold text-[#38bdf8] tracking-wide mt-0.5 sm:mt-1">
+                    Founder and CEO digitize
+                  </p>
 
-            <div className="pt-4 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-zinc-400">
-              <span className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                DIGITIZE DIRECT ARCHITECTURE DISPATCH
-              </span>
-              <span>KARACHI, PAKISTAN</span>
+                  <p className="hidden sm:block text-[11px] lg:text-xs text-slate-300 font-light mt-3 leading-relaxed max-w-md line-clamp-3">
+                    It&apos;s about creating meaningful impact. Over the past 7 years, I&apos;ve worked with founders, corporations, and industries to build systems that go beyond expectations.
+                  </p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mt-2 pt-2 border-t border-white/10">
+                  <a
+                    href={`mailto:${STUDIO_INFO.email}`}
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0d2a6b] hover:bg-[#123687] border border-[#2563eb]/50 text-white text-[11px] sm:text-xs font-mono transition-colors shadow-[0_0_15px_rgba(37,99,235,0.3)] w-fit"
+                  >
+                    <span className="w-4 h-4 rounded-full bg-[#2563eb] flex items-center justify-center text-white shrink-0">
+                      <Mail className="w-2.5 h-2.5" />
+                    </span>
+                    <span className="truncate max-w-[140px] sm:max-w-none">{STUDIO_INFO.email}</span>
+                  </a>
+
+                  <p className="text-[8px] sm:text-[9px] font-bold italic tracking-widest text-[#38bdf8]/60 uppercase text-right leading-tight hidden xs:block">
+                    WE DON&apos;T BUILD PROJECTS.
+                    <br />
+                    WE BUILD PLATFORMS THAT POWER THE FUTURE
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         )}

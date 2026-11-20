@@ -337,7 +337,7 @@ export const TEAM: TeamMember[] = [
     name: "Madni Silat",
     role: "FOUNDER & CEO",
     specialty: "Digital Strategy & Enterprise Systems",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
+    avatar: "/ceo.png",
     experience: "Founder & Technology Leader",
     github: "https://github.com",
     linkedin: "https://linkedin.com",
